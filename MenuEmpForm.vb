@@ -26,4 +26,9 @@
         Me.Close()
 
     End Sub
+
+    Private Sub purchaseButton_Click(sender As Object, e As EventArgs) Handles purchaseButton.Click
+        Me.ActiveControl = Nothing
+        PurchaseForm.Show()
+    End Sub
 End Class

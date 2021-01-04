@@ -1,12 +1,14 @@
 ﻿Imports System.Data.OleDb
 
 Public Class ProductForm
+    Dim connection As New Connection
+    Dim cs As String = connection.connectionString
     Private Sub ProductForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'CSystemDataSet.Producttbl' table. You can move, or remove it, as needed.
         Me.ProducttblTableAdapter.Fill(Me.CSystemDataSet.Producttbl)
 
         'To update datagrid after CRUD
-        Dim conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\jamez\Desktop\Cashiering_System01\CSystem.accdb")
+        Dim conn As New OleDbConnection(cs)
         productDgv.DataSource = Nothing
         productDgv.Refresh()
 
@@ -23,7 +25,7 @@ Public Class ProductForm
     End Sub
 
     Private Sub addButton_Click(sender As Object, e As EventArgs) Handles addButton.Click
-        Dim conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\jamez\Desktop\Cashiering_System01\CSystem.accdb")
+        Dim conn As New OleDbConnection(cs)
         Dim update As String = "INSERT INTO Producttbl ([ProductName], [Manufacturer], [Price]) VALUES (@ProductName, @Manufacturer, @Price)" 'database query
 
         If productNameTextbox.Text = Nothing Or manufacturerTextbox.Text = Nothing Or priceTextbox.Text = Nothing Then
@@ -51,7 +53,7 @@ Public Class ProductForm
     End Sub
 
     Private Sub editButton_Click(sender As Object, e As EventArgs) Handles editButton.Click
-        Dim conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\jamez\Desktop\Cashiering_System01\CSystem.accdb")
+        Dim conn As New OleDbConnection(cs)
         Dim update As String = "UPDATE Producttbl SET ProductName=@ProductName, Manufacturer=@Manufacturer, Price=@Price WHERE ProductID=@ProductID" 'database query
 
         If productNameTextbox.Text = Nothing Or manufacturerTextbox.Text = Nothing Or priceTextbox.Text = Nothing Then
@@ -80,7 +82,7 @@ Public Class ProductForm
     End Sub
 
     Private Sub deleteButton_Click(sender As Object, e As EventArgs) Handles deleteButton.Click
-        Dim conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\jamez\Desktop\Cashiering_System01\CSystem.accdb")
+        Dim conn As New OleDbConnection(cs)
         Dim update As String = "DELETE FROM Producttbl WHERE ProductID=@ProductID" 'database query
 
         conn.Open()
@@ -101,7 +103,7 @@ Public Class ProductForm
 
     Private Sub productDgv_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles productDgv.CellClick
         'cellclick to fetch data to textbox
-        Dim conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\jamez\Desktop\Cashiering_System01\CSystem.accdb")
+        Dim conn As New OleDbConnection(cs)
         Dim i As Integer
         Dim io As String
         io = CStr(i) 'conversion of Integer to String because Ref# or SL_ID/Loan Amount is an Integer value and won't be valid to call below without this

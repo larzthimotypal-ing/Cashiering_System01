@@ -48,7 +48,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -74,10 +76,28 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckoutForm.Designer.vb">
+      <DependentUpon>CheckoutForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CheckoutForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Connection.vb" />
     <Compile Include="CSystemDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CSystemDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CSystemDataSet1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CSystemDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DailyReportsCompilation.Designer.vb">
+      <DependentUpon>DailyReportsCompilation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DailyReportsCompilation.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginCreateForm.Designer.vb">
       <DependentUpon>LoginCreateForm.vb</DependentUpon>
@@ -122,16 +142,28 @@
     <Compile Include="EmployeeCRUDForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="OrderQuantityForm.Designer.vb">
+      <DependentUpon>OrderQuantityForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OrderQuantityForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ProductForm.Designer.vb">
       <DependentUpon>ProductForm.vb</DependentUpon>
     </Compile>
     <Compile Include="ProductForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SalesReportForm.Designer.vb">
-      <DependentUpon>SalesReportForm.vb</DependentUpon>
+    <Compile Include="PurchaseForm.Designer.vb">
+      <DependentUpon>PurchaseForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="SalesReportForm.vb">
+    <Compile Include="PurchaseForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DailyReportForm.Designer.vb">
+      <DependentUpon>DailyReportForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DailyReportForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -149,8 +181,26 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="SalesReportForm.Designer.vb">
+      <DependentUpon>SalesReportForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SalesReportForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeeklyReportForms.Designer.vb">
+      <DependentUpon>WeeklyReportForms.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WeeklyReportForms.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CheckoutForm.resx">
+      <DependentUpon>CheckoutForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DailyReportsCompilation.resx">
+      <DependentUpon>DailyReportsCompilation.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginCreateForm.resx">
       <DependentUpon>LoginCreateForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -172,17 +222,29 @@
     <EmbeddedResource Include="MenuEmpForm.resx">
       <DependentUpon>MenuEmpForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OrderQuantityForm.resx">
+      <DependentUpon>OrderQuantityForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProductForm.resx">
       <DependentUpon>ProductForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SalesReportForm.resx">
-      <DependentUpon>SalesReportForm.vb</DependentUpon>
+    <EmbeddedResource Include="PurchaseForm.resx">
+      <DependentUpon>PurchaseForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DailyReportForm.resx">
+      <DependentUpon>DailyReportForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesReportForm.resx">
+      <DependentUpon>SalesReportForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeeklyReportForms.resx">
+      <DependentUpon>WeeklyReportForms.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +258,17 @@
     </None>
     <None Include="CSystemDataSet.xss">
       <DependentUpon>CSystemDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CSystemDataSet1.xsc">
+      <DependentUpon>CSystemDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="CSystemDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CSystemDataSet1.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CSystemDataSet1.xss">
+      <DependentUpon>CSystemDataSet1.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

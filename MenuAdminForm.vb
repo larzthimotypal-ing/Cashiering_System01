@@ -13,7 +13,7 @@
 
     Private Sub salesReportButton_Click(sender As Object, e As EventArgs) Handles salesReportButton.Click
         Me.ActiveControl = Nothing
-        SalesReportForm.Show()
+        DailyReportForm.Show()
 
     End Sub
 

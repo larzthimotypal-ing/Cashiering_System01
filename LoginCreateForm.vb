@@ -1,12 +1,14 @@
 ﻿Imports System.Data.OleDb
 
 Public Class LoginCreateForm
+    Dim connection As New Connection
+    Dim cs As String = connection.connectionString
     Private Sub LoginCreateForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'CSystemDataSet.Logintbl' table. You can move, or remove it, as needed.
         Me.LogintblTableAdapter.Fill(Me.CSystemDataSet.Logintbl)
 
         'To update datagrid after CRUD
-        Dim conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\jamez\Desktop\Cashiering_System01\CSystem.accdb")
+        Dim conn As New OleDbConnection(cs)
         loginDgv.DataSource = Nothing
         loginDgv.Refresh()
 
@@ -23,7 +25,7 @@ Public Class LoginCreateForm
     End Sub
 
     Private Sub addButton_Click(sender As Object, e As EventArgs) Handles addButton.Click
-        Dim conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\jamez\Desktop\Cashiering_System01\CSystem.accdb")
+        Dim conn As New OleDbConnection(cs)
         Dim update As String = "INSERT INTO Logintbl ([EmployeeID], [Password], [UserType]) VALUES (@EmployeeID, @Password, @UserType)" 'database query
 
         If employeeIDTextbox.Text = Nothing Or passwordLabel.Text = Nothing Or usertypeCheckbox.Text = Nothing Then
@@ -50,7 +52,7 @@ Public Class LoginCreateForm
     End Sub
 
     Private Sub editButton_Click(sender As Object, e As EventArgs) Handles editButton.Click
-        Dim conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\jamez\Desktop\Cashiering_System01\CSystem.accdb")
+        Dim conn As New OleDbConnection(cs)
         Dim update As String = "UPDATE Logintbl SET EmployeeID=@EmployeeID, Password=@Password, UserType=@UserType WHERE LoginID=LoginID)" 'database query
 
         If employeeIDTextbox.Text = Nothing Or passwordLabel.Text = Nothing Or usertypeCheckbox.Text = Nothing Then
@@ -79,7 +81,7 @@ Public Class LoginCreateForm
     End Sub
 
     Private Sub deleteButton_Click(sender As Object, e As EventArgs) Handles deleteButton.Click
-        Dim conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\jamez\Desktop\Cashiering_System01\CSystem.accdb")
+        Dim conn As New OleDbConnection(cs)
         Dim update As String = "DELETE FROM Logintbl WHERE LoginID=@LoginID" 'database query
 
         conn.Open()
@@ -104,7 +106,7 @@ Public Class LoginCreateForm
 
     Private Sub loginDgv_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles loginDgv.CellClick
         'cellclick to fetch data to textbox
-        Dim conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\jamez\Desktop\Cashiering_System01\CSystem.accdb")
+        Dim conn As New OleDbConnection(cs)
         Dim i As Integer
         Dim io As String
         io = CStr(i) 'conversion of Integer to String because Ref# or SL_ID/Loan Amount is an Integer value and won't be valid to call below without this

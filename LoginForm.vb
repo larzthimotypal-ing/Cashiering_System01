@@ -1,8 +1,11 @@
 ﻿Imports System.Data.OleDb
 
 Public Class LoginForm
+    Dim connection As New Connection
+    Dim cs As String = connection.connectionString
+    Public employeeID As Integer = 0
     Private Sub loginButton_Click(sender As Object, e As EventArgs) Handles loginButton.Click
-        Dim conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\jamez\Desktop\Cashiering_System01\CSystem.accdb")
+        Dim conn As New OleDbConnection(cs)
         Dim cmd As New OleDbCommand("SELECT * FROM Logintbl WHERE EmployeeID=@EmployeeID And Password=@Password and UserType=@UserType", conn)
 
         'Added parameters for the variable attachment on database query
@@ -21,11 +24,13 @@ Public Class LoginForm
 
         ElseIf usertypeCheckbox.Text = "Admin" Then
             MsgBox("Login Success!", MsgBoxStyle.Information)
+            employeeID = Integer.Parse(empLoginTxtbox.Text)
             Me.Hide()
             MenuAdminForm.Show()
 
         ElseIf usertypeCheckbox.Text = "Employee" Then
             MsgBox("Login Success!", MsgBoxStyle.Information)
+            employeeID = Integer.Parse(empLoginTxtbox.Text)
             Me.Hide()
             MenuEmpForm.Show()
 
